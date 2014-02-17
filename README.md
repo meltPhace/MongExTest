@@ -4,5 +4,6 @@ MongExTest
 node v0.10.25
 mongodb
 
-npm install 
-(voir package.json)
+npm install
+
+node app.js <port number>
