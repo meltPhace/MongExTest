@@ -24,9 +24,7 @@ app.get('/thread/:title.:format?', api.show);
 app.get('/thread', api.list);
 
 //petit test
-app.get('/test', function(req, res){
-	res.render('index', { title: 'the new shit'});
-});
+app.get('/test', api.showIp);
 
 app.listen(app.get('port'), function () {
 	console.log("Express server listening on port " + app.get('port') + "...");

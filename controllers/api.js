@@ -8,6 +8,15 @@
 var Thread = require('../models/thread.js');
 var Post = require('../models/post.js');
 
+exports.showIp = function (req, res) {
+  var theIp = req.headers['x-forwarded-for'] || 
+     req.connection.remoteAddress || 
+     req.socket.remoteAddress ||
+     req.connection.socket.remoteAddress;
+
+  res.render('index', { title: 'the new shit', ip: theIp });
+}
+
 exports.post = function(req, res) {
   new Thread({
     title: req.body.title,
