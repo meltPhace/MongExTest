@@ -1,19 +1,20 @@
 // The main application script, ties everything together.
-
 var express = require('express');
 var mongoose = require('mongoose');
-var port = process.argv[2] || 8000;
 var app = express();
 
 // connect to Mongo when the app initializes
-mongoose.connect('mongodb://localhost/norum');
+mongoose.connect('mongodb://localhost/test');
 
-app.configure(function(){	
-	app.use(express.logger());//logger en 1er pour tout loguer
-	app.use(express.static(__dirname + '/public'));//fichiers statiques
-  app.use(express.urlencoded());//remplace bodyparser
-  app.use(express.methodOverride());
-  app.use(app.router);
+app.configure(function() {
+	app.set('port', process.env.PORT || 2501);
+	app.set('views', __dirname + '/views');
+	app.set('view engine', 'hjs');
+	app.use(express.logger());
+	app.use(express.urlencoded());//remplace bodyparser	
+	app.use(express.methodOverride());
+	app.use(express.static(__dirname + '/public'));
+	app.use(app.router);
 });
 
 // set up the RESTful API, handler methods are defined in api.js
@@ -22,5 +23,11 @@ app.post('/thread', api.post);
 app.get('/thread/:title.:format?', api.show);
 app.get('/thread', api.list);
 
-app.listen(port);
-console.log("Express server listening on port " + port + "...");
+//petit test
+app.get('/test', function(req, res){
+	res.render('index', { title: 'the new shit'});
+});
+
+app.listen(app.get('port'), function () {
+	console.log("Express server listening on port " + app.get('port') + "...");
+});
