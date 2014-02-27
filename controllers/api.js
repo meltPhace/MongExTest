@@ -7,14 +7,21 @@
 
 var Thread = require('../models/thread.js');
 var Post = require('../models/post.js');
+var Book = require('../models/book.js');
+var Author = require('../models/author.js');
+var OsModel = require('../models/os.js');
 
 exports.showIp = function (req, res) {
   var theIp = req.headers['x-forwarded-for'] || 
      req.connection.remoteAddress || 
      req.socket.remoteAddress ||
-     req.connection.socket.remoteAddress;
+     req.connection.socket.remoteAddress
 
   res.render('index', { title: 'the new shit', ip: theIp });
+}
+
+exports.showOsInfo = function (req, res) {
+  res.render('os', { title: 'os infos', os: new OsModel() })
 }
 
 exports.post = function(req, res) {

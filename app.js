@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 var app = express();
 
 // connect to Mongo when the app initializes
-mongoose.connect('mongodb://localhost/test');
+//mongoose.connect('mongodb://localhost/test');
 
 app.configure(function() {
 	app.set('port', process.env.PORT || 2501);
@@ -23,8 +23,10 @@ app.post('/thread', api.post);
 app.get('/thread/:title.:format?', api.show);
 app.get('/thread', api.list);
 
-//petit test
-app.get('/test', api.showIp);
+//ip
+app.get('/ip', api.showIp);
+//os
+app.get('/os', api.showOsInfo);
 
 app.listen(app.get('port'), function () {
 	console.log("Express server listening on port " + app.get('port') + "...");

@@ -1,0 +1,28 @@
+<!--The  os view -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>{{ title }}</title>
+    <link rel='stylesheet' href='/css/bootstrap-theme.css' />
+  </head>
+  <body>
+    <h1>{{ title }}</h1>
+
+    <section id="osInfos">
+      <ul>
+      {{#os}}
+      <li>tmpDir: {{tmpDir}}</li>
+      <li>hostname: {{hostname}}</li>
+      <li>typename: {{typeName}}</li>
+      <li>platform: {{platform}}</li>
+      <li>amount of free system memory in bytes: {{freememBytes}}</li>
+      <li>amount of free system memory in kilobytes: {{freememKiloBytes}}</li>
+      <li>amount of free system memory in megabytes: {{freememMegaBytes}}</li>
+      <li>amount of free system memory in gigabytes: {{freememGigaBytes}}</li>
+      {{/os}}
+    </ul>
+    </section>
+
+  </body>
+</html>
+

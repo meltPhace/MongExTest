@@ -6,4 +6,4 @@ mongodb
 
 npm install
 
-node app.js <port number>
+node app.js 
